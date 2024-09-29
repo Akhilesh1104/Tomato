@@ -4,7 +4,7 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
 
-  const url = "http://localhost:4000";
+  const url = "https://tomato-backend-khm3.onrender.com";
   const [cartItems, setCartItems] = useState({});
   const [token,setToken] = useState("");
   const [food_list,setFoodList] = useState([]);
