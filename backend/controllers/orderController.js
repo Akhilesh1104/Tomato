@@ -7,7 +7,7 @@ import orderModel from "../models/orderModel.js";
 //Placing user Order from frontend
 const placeOrder = async (req, res) => {
 
-    const frontend_url ="http://localhost:5173"
+    const frontend_url ="https://tomato-frontend-wdeu.onrender.com"
 
   try {
 
