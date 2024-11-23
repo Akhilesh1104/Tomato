@@ -1,4 +1,6 @@
 import foodModel from "../models/foodModel.js";
+import { v2 as Cloudinary } from "cloudinary";
+
 import fs from "fs";
 
 //All Food Items 
@@ -14,17 +16,23 @@ const listFood = async (req,res) =>{
 
 //Add Food Item
 const addFood = async (req,res) => {
-    let image_filename = `${req.file.filename}`;
+    try{
+    
+    const imageFile = req.file;
+    //Upload Image to Cloudinary
+    const imageUpload = await Cloudinary.uploader.upload(imageFile.path, {
+        resource_type: "image",
+      });
+      const imageUrl = imageUpload.secure_url;  
 
     const food = new foodModel({
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
         category: req.body.category,
-        image: image_filename
+        image: imageUrl,
     })
 
-    try{
         await food.save();
         res.json({success:true,message:"Food Added"})
     }catch(err){

@@ -5,7 +5,9 @@ import foodRouter from "./routes/foodRoute.js"
 import userRouter from "./routes/userRoute.js"
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
+import connectCloudinary from "./config/cloudinary.js"
 import 'dotenv/config'
+
 
 //app config
 const app= express()
@@ -17,6 +19,7 @@ app.use(cors())
 
 //DB Connection
 connectDB();
+connectCloudinary();
 
 //Api Endpoints
 app.use("/api/food",foodRouter)
