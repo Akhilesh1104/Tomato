@@ -59,7 +59,7 @@ const Placeorder = () => {
   useEffect(()=>{
     if(!token){
       navigate('/cart');
-      toast.error("Please Login to continue")
+      toast.warn("Please Login to continue")
 
     }
     else if(getTotalCartAmount()===0)
